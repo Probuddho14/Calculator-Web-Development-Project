@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>HTML Calculator | Minor Project 2</title>
+        <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" integrity="sha512-oAvZuuYVzkcTc2dH5z1ZJup5OmSQ000qlfRvuoTTiyTBjwX1faoyearj8KdMq0LgsBTHMrRuMek7s+CxF8yE+w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <style>
+            .calc-btn{
+                width: 60px;
+                height: 60px;
+                background-color: rgba(255, 255, 255, 0.722);
+                border-radius: 30px;
+                font-weight: medium;
+                padding-top:3%;
+                border-color: #eb92be;
+                border-width: 1px;
+            }
+            .calc-display{
+                background-color: white;
+                color: black;
+                height: 100px;
+                width: 310px;
+                border-radius: 15px;
+            }
+            .inputString{
+                margin-top: 5px;
+                height: 20px;
+                display: block;
+                font-size: 20px;
+            }
+            .expressionString{
+                margin-top: 5px;
+                height: 20px;
+                display: block;
+                font-size: 20px;
+            }
+            .valueString{
+                margin-top: 5px;
+                height: 20px;
+                display: block;
+                font-size: 30px;
+                color: blue;
+                text-align: end;
+            }
+
+        </style>
+    </head>
+    <body style="background: linear-gradient(320deg, #eb92be, #ffef78, #63c9b4);">
+        <h1 style="text-align: center; color: goldenrod;">HTML Calculator</h1>
+    
+        <div class="container p-5">
+        <div class="d-flex justify-content-center">
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="card" style="background-color: gray; opacity: 0.7; border-radius: 30px; box-shadow: 0 4px 30px;">
+                    <div class="d-flex justify-content-center align-items-center p-4">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 calc-display">
+                                <div id="number_div" class="inputString">0</div>
+                                <div id="expression" class="expressionString"></div>
+                                <div id="value_div" class="valueString"></div>
+                            </div>
+                            <input type="hidden" id="savedExpression">
+                        </div>
+                        </div>
+                    <div class="d-flex justify-content-center align-items-center p-3">
+                    <div class="row">
+                        
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                            <button type="button" class="btn btn-light calc-btn" data-event_key="a" style="color: red; font-size: 25px; font-weight: bold;">
+                                AC
+                            </button>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                            <button type="button" class="btn btn-light calc-btn" data-event_key="c" style="color: orange; font-size: 20px; font-weight: bold;">
+                                Del
+                            </button>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                            <button type="button" class="btn btn-light calc-btn" data-event_key=";" style="font-size: 30px; color: rgb(4, 145, 4);">
+                                &#37
+                            </button>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                            <button type="button" class="btn btn-light calc-btn" data-event_key="/" style="font-size: 30px; color: rgb(4, 145, 4);">
+                                &#247
+                            </button>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center p-3">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                            <button type="button" class="btn btn-light calc-btn" data-event_key="7" style="font-size: 30px;">
+                                7
+                            </button>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                            <button type="button" class="btn btn-light calc-btn" data-event_key="8" style="font-size: 30px;">
+                                8
+                            </button>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                            <button type="button" class="btn btn-light calc-btn" data-event_key="9" style="font-size: 30px;">
+                                9
+                            </button>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                            <button type="button" class="btn btn-light calc-btn" data-event_key="*" style="font-size: 30px; color: rgb(4, 145, 4);">
+                                &#215
+                            </button>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center p-3">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                            <button type="button" class="btn btn-light calc-btn" data-event_key="4" style="font-size: 30px;">
+                                4
+                            </button>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                            <button type="button" class="btn btn-light calc-btn" data-event_key="5" style="font-size: 30px;">
+                                5
+                            </button>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                            <button type="button" class="btn btn-light calc-btn" data-event_key="6" style="font-size: 30px;">
+                                6
+                            </button>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                            <button type="button" class="btn btn-light calc-btn" data-event_key="-" style="font-size: 30px; color: rgb(4, 145, 4);">
+                                &#8722
+                            </button>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center p-3">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                            <button type="button" class="btn btn-light calc-btn" data-event_key="1" style="font-size: 30px;">
+                                1
+                            </button>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                            <button type="button" class="btn btn-light calc-btn" data-event_key="2" style="font-size: 30px;">
+                                2
+                            </button>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                            <button type="button" class="btn btn-light calc-btn" data-event_key="3" style="font-size: 30px;">
+                                3
+                            </button>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                            <button type="button" class="btn btn-light calc-btn" data-event_key="+" style="font-size: 30px; color: rgb(4, 145, 4);">
+                                +
+                            </button>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center p-3">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <button type="button" class="btn btn-light calc-btn" style="width: 150px; font-size: 30px;" data-event_key="0">
+                                0
+                            </button>
+                    
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                            <button type="button" class="btn btn-light calc-btn" data-event_key="." style="font-size: 30px;">
+                                .
+                            </button>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                            <button type="button" class="btn btn-light calc-btn" data-event_key="=" style="font-size: 30px; color: white; background-color: rgb(4, 145, 4);">
+                                =
+                            </button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="vendor/bootstrap/js/bootstrap.js"></script>
+        
+        <script>
+            $(document).on('keypress',function(e){
+                $('button[data-event_key="'+e.key+'"]').addClass('active')
+                if((e.keyCode >= 48 && e.keyCode <= 57)||e.key=='.'){
+                    appendNumber(e.key)
+                }
+                else{
+                    if(e.key=='+'||e.key=='-'||e.key=='/'||e.key=='*'){
+                        generateExpression(e.key)
+                    }
+                    else if(e.key==';'){
+                        percent()
+                    }
+                    else if(e.key == '='){
+                        evaluateExpression()
+                    }
+                    else if(e.key == 'a'){
+                        clearCalc()
+                    }
+                    else if(e.key == 'c'){
+                        reduceExp()
+                    }
+                }
+                
+            })
+
+            $(document).on('keyup',function(e){
+                $('button[data-event_key="'+e.key+'"]').removeClass('active')
+                
+            })
+
+            $('.calc-btn').on('click',function(e){
+                var key = $(this).data('event_key')
+                if(key!='+' && key!= '-' && key!= '*' && key!='/' && key!='c' && key!=';' && key!='=' && key!='a'){
+                    appendNumber(key)
+                }
+                else{
+                    if(key=='+'||key=='-'||key=='/'||key== '*'){
+                        generateExpression(key)
+                    }
+                    else if(key == '='){
+                        evaluateExpression()
+                    }
+                    else if(key == 'a'){
+                        clearCalc()
+                    }
+                    else if(key == 'c'){
+                        reduceExp()
+                    }
+                    else if(key == ';'){
+                        percent()
+                    }
+                }
+                
+            })
+
+            function appendNumber(number){
+                var existingNumber = $("#number_div").html();
+                var currentString = number;
+                var outputString = '';
+                if(existingNumber != '' && existingNumber != undefined && existingNumber != null){
+                    if(existingNumber == '0'){
+                        outputString = number
+                    }
+                    else{
+                        outputString = existingNumber+=currentString
+                    }
+                }
+                else{
+                    outputString = currentString;
+                }
+                $("#number_div").html(outputString);
+            }
+
+            function generateExpression(operator){
+                var existingNumber = $("#number_div").html();
+                var currentOperator = operator;
+                var expression = '';
+                var savedExpression = $("#savedExpression").val();
+
+                if(savedExpression == '' || savedExpression == null || savedExpression == undefined){
+                    expression = parseFloat(existingNumber) + operator
+                }
+                else{
+                    expression = savedExpression + existingNumber + operator;
+                }
+
+                $("#number_div").html("")
+                $("#savedExpression").val(expression)
+                $("#expression").html(expression)
+            }
+
+            function evaluateExpression(){
+                var result = '';
+                var expression = $("#savedExpression").val();
+                var existingNumber = $("#number_div").html();
+
+                if(existingNumber != '' || existingNumber != null || existingNumber != undefined){
+                    expression = expression + parseFloat(existingNumber);
+                    $("#expression").html(expression)
+                }
+
+                try{
+                result = eval(expression);
+                
+                $("#savedExpression").val("")
+                $("#number_div").html(result)
+                if((result+'').length>17){
+                    result = (result+"").substring(0,17)
+                    $("#value_div").html(result)
+                }
+                else{
+                $("#value_div").html(result)
+                }
+                if($("#number_div").html()==''){
+                    $("#number_div").html("")
+                    $("#expression").html("")
+                    $("#value_div").html("Error")
+                }
+            }
+           
+            catch(error){
+            if(error instanceof EvalError){
+                $("#number_div").html("")
+                $("#expression").html("")
+                $("#value_div").html("Error")
+            } 
+            else{
+                $("#number_div").html("")
+                $("#expression").html("")
+                $("#value_div").html("Error")
+            }
+            }
+            }
+
+            function clearCalc(){
+                $("#number_div").html("0")
+                $("#savedExpression").val("")
+                $("#expression").html("")
+                $("#value_div").html("")
+            }
+
+            function reduceExp(){
+                var existingNumber = $("#number_div").html();
+                if(existingNumber.length>0){
+                    existingNumber = existingNumber.substring(0,existingNumber.length-1);
+                    $("#number_div").html(existingNumber);
+                }
+               
+                else{
+                    var expression = $("#savedExpression").val();
+                    expression = expression.substring(0,expression.length-1);
+                    $("#savedExpression").val(expression);
+                    $("#expression").html(expression);
+                }
+               
+            }
+
+            function percent(){
+                var key = $("#number_div").html();
+                var res = parseFloat(key)/100;
+                key = res+'';
+                $("#number_div").html(key);
+            }
+
+        </script>
+    </body>
+</html>
